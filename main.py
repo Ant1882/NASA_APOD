@@ -14,6 +14,13 @@ title = data["title"]
 image_url = data["url"]
 explanation = data["explanation"]
 
-print(title)
-print(image_url)
-print(explanation)
+# Download the image
+image_filepath = "img.png"
+response2 = requests.get(image_url)
+with open(image_filepath, 'wb') as file:
+    file.write(response2.content)
+
+# Display the content
+st.title(title)
+st.image(image_filepath)
+st.write(explanation)
